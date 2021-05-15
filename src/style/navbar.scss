@@ -1,0 +1,30 @@
+.navbar {
+    
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+    font-size: 1.7rem;
+    background-color: $dark-teal;
+    
+    .left-side {
+        display: flex;
+    }
+    
+    .nav-link-wrapper {
+        .nav-btn {
+            text-transform: uppercase;
+            color:  black;
+            
+            padding: 20px;
+            &:hover {
+                background-color: $darker-teal;
+            }
+        }
+    }
+    .nav-link-active {            
+        .nav-btn {
+            background-color: $teal;
+        }
+    }
+
+}

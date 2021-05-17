@@ -8,22 +8,28 @@ export default class Auth extends Component {
             loginStatus: "NOT_LOGGED_IN"
         };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleLogin = this.toggleLogin.bind(this);
     }
 
-    handleSubmit(event) {
+    toggleLogin(event) {
         event.preventDefault();
         
         if (this.state.loginStatus !== "NOT_LOGGED_IN") {
             this.setState ({
                 loginStatus : "NOT_LOGGED_IN"
             });
-            } else {
-                this.setState ({
-                    loginStatus : "LOGGED_IN"
-                });
-                this.props.history.push("/");
+            window.alert("Logged out");
+            this.props.statusToggle();
+            this.props.history.push("/");
+
+        } else {
+            this.setState ({
+                loginStatus : "LOGGED_IN"
+            });
+            
+            // this.props.history.push("/");
             }
+            this.props.statusToggle();
     }
 
     render() {
@@ -32,8 +38,12 @@ export default class Auth extends Component {
                 <div className="login-wrapper">
                     <div className="login-btn">
                         <h2>{this.state.loginStatus}</h2>
-                        <form onSubmit={this.handleSubmit}>
-                            <button type="submit">Login/Logout</button> 
+                        <form onSubmit={this.toggleLogin}>
+                            <button type="submit">
+                            {this.state.loginStatus === 'LOGGED_IN' ? 'Logout'
+                 : 'Login'}
+
+                                    </button>
                         </form>
                     </div>
                 </div>

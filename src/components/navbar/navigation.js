@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-export default class Navigation extends Component {
-    render() {
+const NavigationComponent = props => {
 
         return (
             <div className="navbar">
@@ -35,11 +35,23 @@ export default class Navigation extends Component {
                 <div className="right-side">
                     <div className="btn nav-link-wrapper">
                         <NavLink to = "/auth" activeClassName="nav-link-active">
-                            <div className="nav-btn"> Login/Logout<i className="fas fa-poop"></i></div>
+
+                            <div className="nav-btn">
+                                
+                                {props.loginStatus === 'LOGGED_IN' ? 
+                                    'Sign out here'
+                                    : 
+                                    'GUEST'
+                                }
+                                
+                            </div>
+                            
                         </NavLink>
                     </div>
                 </div>
             </div> 
         );
-    }
+    // }
 }
+
+export default withRouter(NavigationComponent);
